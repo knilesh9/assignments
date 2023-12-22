@@ -89,14 +89,17 @@
     })
   })
 
+  getTodo(); // initialize once that's it, nothing more.
 
+
+  //TODO: just generate a random id, tomorrow.
   app.get("/todos/:id", (req, res) => {
-    getTodo();
     let id2Check = req.params.id;
-
-    if(titleArray.some(array => array.id === parseInt(id2Check))){
+    let found = titleArray.find(array => array.id === parseInt(id2Check))
+    if(found){
       res.status(200).json({
-        Id: "Will be returning soon"
+        titleArray: titleArray,
+        What: found
       });
     }else {
       res.status(404).json({

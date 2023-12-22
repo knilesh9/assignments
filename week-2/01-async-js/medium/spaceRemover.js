@@ -32,6 +32,14 @@ fs.readFile(filePath, "utf-8", (err, data) => {
                 console.log("Error writing file: "+err);
             }else{
                 console.log("File cleaned and updated successfully.");
+                
+                fs.readFile(filePath, "utf-8", (err, data) => {
+                    if(err){
+                        console.log("Error opening the file: "+err)
+                    }else{
+                        console.log(data);
+                    }
+                });
             }
         });
     }

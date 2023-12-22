@@ -51,29 +51,58 @@
 
   //my code
 
-  let todoArray = [{
+  let todoArray = [
+    {
     todo: "Todo 1: Your title",
-    description: "this is todo's description"
-  }, {
+    description: "this is todo's description",
+    id: 5
+    },
+    
+    {
     todo: "Todo 2: do number",
-    description: "Desc of 2nd todo"
-  }];
+    description: "Desc of 2nd todo",
+    id: 6
+    }
+
+  ];
 
   let titleArray = []; // second array to store the other elem's
 
   function getTodo(){
     for(i=0; i<todoArray.length; i++){
-      titleArray.push(todoArray[i].todo);
+      // titleArray.push(todoArray[i].todo);
+      // titleArray.push(todoArray[i].id);
+      const items = {
+        todo: todoArray[i].todo,
+        id: todoArray[i].id
+      };
+      titleArray.push(items);
     }
   }
 
   app.get("/todos", (req, res) => {
-    let sentResponse = "What do you know"
+    // let sentResponse = "What do you know"
     getTodo(); //iterate through array and push to new array.
     res.status(200).json({
       ToDoArray: JSON.stringify(todoArray),
       ToDoList: JSON.stringify(titleArray)
     })
+  })
+
+
+  app.get("/todos/:id", (req, res) => {
+    getTodo();
+    let id2Check = req.params.id;
+
+    if(titleArray.some(array => array.id === parseInt(id2Check))){
+      res.status(200).json({
+        Id: "Will be returning soon"
+      });
+    }else {
+      res.status(404).json({
+        Error: "Invalid id"
+      })
+    }
   })
 
   app.listen(3000)

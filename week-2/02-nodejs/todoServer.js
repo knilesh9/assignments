@@ -113,6 +113,7 @@
     let body = req.body;
 
     todoArray.push(body);
+    // titleArray.push(body);
 
     res.status(201).json({
       Data: "Inserted successful",
@@ -120,5 +121,31 @@
     })
 
   })
+
+app.put("/todos/:id", (req, res) => {
+  let id3Check = req.params.id;
+
+  let updateContent = req.body;
+
+  let found2 = todoArray.find(array => array.id === parseInt(id3Check)) //find the array of id
+
+  let foundIndex = todoArray.findIndex(array => array.id === parseInt(id3Check))
+
+  if(foundIndex !== -1){
+    //index, no. of elem to remove, 
+    // todoArray.splice(foundIndex, 1, updateContent);
+    todoArray.splice(foundIndex, 1, updateContent);
+    res.status(200).json({
+      todoArray: todoArray,
+      // titleArray: titleArray
+    })
+  } else{
+    res.status(404).json({
+      Error: "Id out of bound."
+    })
+  }  
+  
+
+})
 
   app.listen(3000)

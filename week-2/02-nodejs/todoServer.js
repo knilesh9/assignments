@@ -68,7 +68,7 @@
 
   let titleArray = []; // second array to store the other elem's
 
-  function getTodo(){
+  function getTodo(){ // push id and title to titleArray.
     for(i=0; i<todoArray.length; i++){
       // titleArray.push(todoArray[i].todo);
       // titleArray.push(todoArray[i].id);
@@ -106,6 +106,19 @@
         Error: "Invalid id"
       })
     }
+  })
+
+  //POST
+  app.post("/todos", (req, res) => {
+    let body = req.body;
+
+    todoArray.push(body);
+
+    res.status(201).json({
+      Data: "Inserted successful",
+      Array: todoArray
+    })
+
   })
 
   app.listen(3000)

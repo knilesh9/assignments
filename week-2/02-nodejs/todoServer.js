@@ -84,8 +84,9 @@
     // let sentResponse = "What do you know"
     getTodo(); //iterate through array and push to new array.
     res.status(200).json({
-      ToDoArray: JSON.stringify(todoArray),
-      ToDoList: JSON.stringify(titleArray)
+      // ToDoArray: JSON.stringify(todoArray),
+      "ToDoArray": todoArray
+      // ToDoList: JSON.stringify(titleArray)
     })
   })
 
@@ -144,7 +145,25 @@ app.put("/todos/:id", (req, res) => {
       Error: "Id out of bound."
     })
   }  
-  
+})
+
+app.delete("/todos/:id", (req, res) => {
+  let theId = req.params.id;
+
+  let toDel = todoArray.findIndex(array => array.id === parseInt(theId))
+
+  if(toDel !== -1){
+    todoArray.splice(toDel, 1);
+    res.status(200).json({
+      "msg": "Record deleted successfully.",
+
+      "Updated": todoArray
+    })
+  }else{
+    res.status(404).json({
+      "Error": "Invalid id"
+    })
+  }
 
 })
 

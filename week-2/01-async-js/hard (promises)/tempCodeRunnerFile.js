@@ -1,0 +1,2 @@
+
+    whatNow =  parseInt(Date.now())

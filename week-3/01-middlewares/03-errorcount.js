@@ -41,6 +41,6 @@ app.use((err, req, res, next) => {
   res.status(404).send("Error Caught")
 })
 
-app.listen(3000)
+app.listen(3002)
 
 module.exports = app;

@@ -12,6 +12,7 @@ let requestCount = 0;
 
 function countRequest(req, res, next){
   requestCount++
+  // console.log(requestCount)
   next()
 }
 
@@ -30,6 +31,6 @@ app.get('/requestCount', function(req, res) {
 });
 
 
-app.listen(3000)
+app.listen(7005); //test fails with already in use but I will skip it.
 
 module.exports = app;

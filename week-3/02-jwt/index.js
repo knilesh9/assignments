@@ -56,13 +56,24 @@ function verifyJwt(token) {
  *                         Returns false if the token is not a valid JWT format.
  */
 function decodeJwt(token) {
-    // Your code here
+    let decodedJwt = jwt.decode(token)
+    if(decodedJwt){
+        return decodedJwt;
+    }else{
+        return false;
+    }
 }
 
-const jwtToken = signJwt("rahul@com.com", jwtPassword)
-console.log(verifyJwt(jwtToken))
+const jwtToken = signJwt("rahul@google.com", jwtPassword)
+verifyJwt(jwtToken)
+decodeJwt(jwtToken)
 
-console.log(jwtToken);
+// const jwtToken = signJwt("rahul@google.com", jwtPassword)
+// //When it's correct schema then the decode returns the email string.
+//
+// console.log(verifyJwt(jwtToken))
+// console.log(jwtToken);
+// console.log(decodeJwt(jwtToken))
 
 module.exports = {
   signJwt,

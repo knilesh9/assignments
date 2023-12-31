@@ -39,7 +39,13 @@ function signJwt(username, password) {
  *                    using the secret key.
  */
 function verifyJwt(token) {
-    // Your code here
+    try{
+        let isVerified = jwt.verify(token, jwtPassword)
+        return true;
+    }catch (err){
+        return false;
+        //return !!isVerified coerce the value to boolean
+    }
 }
 
 /**
@@ -53,7 +59,10 @@ function decodeJwt(token) {
     // Your code here
 }
 
-console.log(signJwt("rahul@com.com", "bdfffgg"))
+const jwtToken = signJwt("rahul@com.com", jwtPassword)
+console.log(verifyJwt(jwtToken))
+
+console.log(jwtToken);
 
 module.exports = {
   signJwt,

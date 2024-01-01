@@ -54,9 +54,11 @@ router.post('/courses', adminMiddleware, (req, res) => {
                 cost: price,
                 imageLink: imageLink
             }).then((isCreated) => {
+                // let courseId = Course.findOne()
+                let { id } = isCreated;
                 res.status(200).json({
                     Message: "Course Created Successfully",
-                    courseId: "<replace with course di>"
+                    CourseId: id
                 })
             })
         }else{

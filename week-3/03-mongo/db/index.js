@@ -34,6 +34,12 @@ const Admin = mongoose.model('Admin', AdminSchema);
 const User = mongoose.model('User', UserSchema);
 const Course = mongoose.model('Course', CourseSchema);
 
+module.exports = {
+    Admin,
+    User,
+    Course
+}
+
 // (async () => {
 //     const admin = await Admin.findOne({
 //         username: "rahul",
@@ -48,9 +54,3 @@ const Course = mongoose.model('Course', CourseSchema);
 // })()
 
 // (()=>{})();
-
-module.exports = {
-    Admin,
-    User,
-    Course
-}

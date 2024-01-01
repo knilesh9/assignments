@@ -18,6 +18,7 @@ function signJwt(username, password) {
     const emailSchema = zod.string().email()
     const passwordSchema = zod.string().min(6)
     try{
+        console.log(jwt.sign(emailSchema.parse(username), passwordSchema.parse(password)))
         return jwt.sign(emailSchema.parse(username), passwordSchema.parse(password))
         //here, if 1st throws exception the 2nd won't run keep in mind.
     }catch (error){
@@ -58,15 +59,15 @@ function verifyJwt(token) {
 function decodeJwt(token) {
     let decodedJwt = jwt.decode(token)
     if(decodedJwt){
-        return decodedJwt;
+        return true;
     }else{
         return false;
     }
 }
 
-const jwtToken = signJwt("rahul@google.com", jwtPassword)
-verifyJwt(jwtToken)
-decodeJwt(jwtToken)
+let signedJwt = signJwt("rahul@google.com", jwtPassword)
+verifyJwt(signedJwt)
+decodeJwt(signedJwt)
 
 // const jwtToken = signJwt("rahul@google.com", jwtPassword)
 // //When it's correct schema then the decode returns the email string.

@@ -33,6 +33,19 @@ const Admin = mongoose.model('Admin', AdminSchema);
 const User = mongoose.model('User', UserSchema);
 const Course = mongoose.model('Course', CourseSchema);
 
+// (async () => {
+//     const admin = await Admin.findOne({
+//         username: "rahul",
+//         password: "canIdo"
+//     });
+//
+//     // Log the result
+//     console.log(admin);
+//
+//     // Ensure to close the MongoDB connection after the operation
+//     // mongoose.connection.close();
+// })()
+
 module.exports = {
     Admin,
     User,

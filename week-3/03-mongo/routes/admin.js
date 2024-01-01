@@ -9,6 +9,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/courses', adminMiddleware, (req, res) => {
     // Implement course creation logic
+    res.status(200).send("Nice!, but you should be better.")
 });
 
 router.get('/courses', adminMiddleware, (req, res) => {

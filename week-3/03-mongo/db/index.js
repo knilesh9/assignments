@@ -6,27 +6,28 @@ mongoose.connect('mongodb+srv://yyooggeesshh0011:hkKPZhmgb7SeSTeo@cluster0.n4rra
 // Define schemas
 const AdminSchema = new mongoose.Schema({
     // Schema definition here
-    username: { type: String, required: true},
-    email: { type: String, required: true},
-    password: { type: String, required: true},
-    isAdmin: { type: Boolean, default: false},
+    username: { type: String},
+    email: { type: String},
+    password: { type: String},
+    isAdmin: { type: Boolean},
 });
 
 const UserSchema = new mongoose.Schema({
     // Schema definition here
-    username: {type: String, required: true},
-    email: {type: String, required:true, unique: true},
-    password: { type: String, required: true},
+    username: {type: String},
+    email: {type: String, unique: true},
+    password: { type: String},
 });
 
 const CourseSchema = new mongoose.Schema({
     // Schema definition here
-    title: { type: String, required: true},
-    description: { type: String, required: true},
-    instructors: { type: String, required: true},
-    students: { type: String, required: true},
-    startDate: { type: Date, required: true},
-    endDate: { type: Date, required: true},
+    title: { type: String},
+    description: { type: String},
+    cost: { type: String },
+    // instructors: { type: String},
+    // students: { type: String},
+    // startDate: { type: Date},
+    imageLink: { type: String},
 });
 
 const Admin = mongoose.model('Admin', AdminSchema);
@@ -45,6 +46,8 @@ const Course = mongoose.model('Course', CourseSchema);
 //     // Ensure to close the MongoDB connection after the operation
 //     // mongoose.connection.close();
 // })()
+
+// (()=>{})();
 
 module.exports = {
     Admin,

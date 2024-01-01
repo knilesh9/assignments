@@ -19,7 +19,7 @@ const { Admin }  = require('../db/');
             password: password,
         });
 
-        console.log(isUser)
+        // console.log(isUser)
 
         if (isUser) {
             next();
@@ -29,7 +29,7 @@ const { Admin }  = require('../db/');
             });
         }
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         res.status(500).json({
             Error: "Internal Server Error",
         });

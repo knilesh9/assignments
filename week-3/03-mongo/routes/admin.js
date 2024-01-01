@@ -69,6 +69,26 @@ router.post('/courses', adminMiddleware, (req, res) => {
 
 router.get('/courses', adminMiddleware, (req, res) => {
     // Implement fetching all courses logic
+    let username = req.headers.username
+    let password = req.headers.password
+
+    Admin.findOne({
+        username: username,
+        password: password
+    }).then((isUser) => {
+        if(isUser){
+            Course.find({}) //don't forget to await here.
+                .then((allCourses) => {
+                    res.status(200).json({
+                        AllCourses: allCourses
+                    })
+                })
+        }else{
+            res.status(404).json({
+                Error: "Something went wrong"
+            })
+        }
+    })
 });
 
 module.exports = router;

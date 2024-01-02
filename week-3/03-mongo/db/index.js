@@ -7,7 +7,7 @@ mongoose.connect('mongodb+srv://yyooggeesshh0011:hkKPZhmgb7SeSTeo@cluster0.n4rra
 const AdminSchema = new mongoose.Schema({
     // Schema definition here
     username: { type: String},
-    email: { type: String},
+    // email: { type: String},
     password: { type: String},
     isAdmin: { type: Boolean},
 });
@@ -15,7 +15,7 @@ const AdminSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
     // Schema definition here
     username: {type: String},
-    email: {type: String, unique: true},
+    // email: {type: String, unique: true},
     password: { type: String},
 });
 
